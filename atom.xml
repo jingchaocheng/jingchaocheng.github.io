@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.chengjingchao.com/"/>
-  <updated>2020-06-01T15:57:35.680Z</updated>
+  <updated>2020-07-27T16:24:04.940Z</updated>
   <id>https://www.chengjingchao.com/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写在连续跑步 99 周</title>
+    <link href="https://www.chengjingchao.com/2020/07/27/%E5%86%99%E5%9C%A8%E8%BF%9E%E7%BB%AD%E8%B7%91%E6%AD%A5-99-%E5%91%A8/"/>
+    <id>https://www.chengjingchao.com/2020/07/27/%E5%86%99%E5%9C%A8%E8%BF%9E%E7%BB%AD%E8%B7%91%E6%AD%A5-99-%E5%91%A8/</id>
+    <published>2020-07-26T16:14:15.000Z</published>
+    <updated>2020-07-27T16:24:04.940Z</updated>
+    
+    <content type="html"><![CDATA[<p>从 2018 年的第 36 周 - 2020 年的第 30 周，达成连续跑步 99 周悦跑圈成就。</p><h1 id="我的跑步经历"><a href="#我的跑步经历" class="headerlink" title="我的跑步经历"></a>我的跑步经历</h1><p>从 2016 年 4 月 1 日，开始跑步并且记录，至今差不多 4 年多了。</p><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最开始为啥要跑步，应该是当时在学校和室友几个一起商量早上起早跑步，然后就跑起来了。商量好的明天跑步，结果你早上不想起来，也有人早上一起叫你，也就不好意思再继续睡了。有伴一起跑，也就不知不觉养成习惯了。当时的跑步路线基本都在学校操场 3 - 5km，周末可能会一起去学校旁边的一个景区跑远一点 10km。</p><p>第一次参加跑步活动<br><img src="/img/life/running2.jpg" alt="running"><br><img src="/img/life/running.jpg" alt="running"></p><p>中间有过一段时间的全勤，后来以为膝盖受伤就跑的很少了。<br><img src="/img/life/running4.jpg" alt="running"></p><p>后来 17 年去厦门工作，基本维持一周一次的跑步频率。</p><p>再后来到了深圳，找到工作后，就又开始跑起来了，达到连续跑步 20 多周的时候便开始在意保持下去。</p><p>18 年 8 月 24 第一次突破半马，中间跟着一个大哥跑了很久。（谢谢那位大哥）</p><p>19年 8 月 - 9 月 开始健身撸铁，为了少做有氧，就减少了跑量，那一两个月每次只跑了 500 - 1000m 。</p><p>现在的跑步状态基本 10 km+</p><p>从最开始跑步到现在的数据记录<br> <img src="/img/life/running3.jpg" width = "300"/></p><hr/><h1 id="跑步装备"><a href="#跑步装备" class="headerlink" title="跑步装备"></a>跑步装备</h1><p>装备基本就是鞋可能挑一点，衣服倒无所谓。最开始跑步就穿的运动鞋校服。后来买了两双跑鞋，我应该不算是个装备党。</p><p>我买过的两双跑鞋</p><ul><li>Asics GT-2000 6</li><li>Adidas UltraBOOST 4.0</li></ul><p>也许今年会买个运动手表⌚️，到时候可以写个评测。</p><hr/><h1 id="跑步路线"><a href="#跑步路线" class="headerlink" title="跑步路线"></a>跑步路线</h1><p>体育馆、公园、景区、人行道和学校操场都跑过。现在的运动类软件基本都有附近的跑步路线推荐。</p><p>操场的好处</p><ul><li>橡胶跑道</li><li>跑不动了还可以跟着别人后面再坚持坚持✊</li></ul><hr/><h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>跑步对我来说并不感到痛苦，并且也算是可以最直接得到正向反馈的一种运动方式。一方面身体会分泌激素，另一方面今天的配速比昨天快一点/距离比昨天远一点等。都是特别直接的自我激励，有了持续的正向反馈，也就很容易坚持下去。</p><p>期待有机会突破 <strong>42.195</strong> 的那一天。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从 2018 年的第 36 周 - 2020 年的第 30 周，达成连续跑步 99 周悦跑圈成就。&lt;/p&gt;
+&lt;h1 id=&quot;我的跑步经历&quot;&gt;&lt;a href=&quot;#我的跑步经历&quot; class=&quot;headerlink&quot; title=&quot;我的跑步经历&quot;&gt;&lt;/a&gt;我的跑步经历&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="https://www.chengjingchao.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="生活" scheme="https://www.chengjingchao.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vim「更现代」的使用方式</title>
+    <link href="https://www.chengjingchao.com/2020/06/13/Vim%E3%80%8C%E6%9B%B4%E7%8E%B0%E4%BB%A3%E3%80%8D%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/"/>
+    <id>https://www.chengjingchao.com/2020/06/13/Vim%E3%80%8C%E6%9B%B4%E7%8E%B0%E4%BB%A3%E3%80%8D%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-06-12T17:15:46.000Z</published>
+    <updated>2020-06-15T15:55:38.883Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><blockquote><p>Vim 是从 vi 发展出来的一个文本编辑器。和 Emacs 并列成为类 Unix 系统用户最喜欢的编辑器。</p></blockquote><p><code>Vim</code> 提供了一系列很强大的编辑文本的操作方式，可以使用纯键盘完成编辑文本操作。再搭配许多插件可以配置成一个 IDE。但是 <code>Vim</code> 有着一个比较陡峭的学习曲线，并且不是开箱即用的。</p><p>如果没有特定的开发环境限制，可以使用</p><p>更漂亮易上手的 <code>GUI（Visual Studio Code）</code> + 更流畅的编辑体验 <code>（Vim）</code></p><p>来提高编码效率，各取所长。</p><p>如今市面上几乎所有的 IDE 和编辑器都提供有 Vim 的相关插件。例如我所体验过的</p><ul><li>Sublime Text - <a href="https://github.com/guillermooo/Vintageous" target="_blank" rel="noopener">Vintageous</a>、<a href="https://github.com/guillermooo/Six" target="_blank" rel="noopener">Six</a></li><li>Visual Studio - <a href="https://github.com/VsVim/VsVim" target="_blank" rel="noopener">VsVim</a></li><li>Visual Studio Code - <a href="https://github.com/VSCodeVim/Vim" target="_blank" rel="noopener">Vim</a></li></ul><p>本文的所有操作都基于 <code>Visual Studio Code</code> +  <code>Vim 插件</code> 演示。(虽然我更喜欢 Sublime…)<br>下文出现的 <code>Vim</code> 均代表 <code>Vim 插件</code></p><hr><h2 id="先来点甜头"><a href="#先来点甜头" class="headerlink" title="先来点甜头"></a>先来点甜头</h2><p>举例几个实际例子，可以想像之前是怎么操作的</p><ol><li><p>字母顺序写反了 <code>ab</code> 写成了 <code>ba</code></p></li><li><p>删除 HTML 元素中的内容 / 删除双引号之间的内容</p></li></ol><p><code>&lt;div&gt;Hello World&lt;/div&gt;</code></p><p><code>list.push(&quot;Hello World&quot;)</code></p><ol start="3"><li>快速精准移动光标</li></ol><h2 id="Vim-模式"><a href="#Vim-模式" class="headerlink" title="Vim 模式"></a>Vim 模式</h2><h3 id="normal-模式"><a href="#normal-模式" class="headerlink" title="normal 模式"></a>normal 模式</h3><blockquote><p>文本编辑不仅仅只是输入，还有删除，选择，移动等操作。normal 模式下有很多命令可以实现</p></blockquote><p>normal 表示自然、放松的状态，Vim设计之初就认为人们使用编辑器时其实只有小部分时间是在真正进行编辑操作，绝大多数时间会用于思考、阅读，以及在文件已有内容中穿梭浏览。</p><ul><li>normal 无法输入</li><li>insert</li><li>:cmd 命令模式</li><li>v visual 可视化模式</li></ul><h3 id="Command-模式"><a href="#Command-模式" class="headerlink" title="Command 模式"></a>Command 模式</h3><p>:w<br>:q<br>:wq<br>:vs<br>:sp</p><h3 id="Visual-模式"><a href="#Visual-模式" class="headerlink" title="Visual 模式"></a>Visual 模式</h3><ul><li>normal 模式下使用 v 进入 visual 选择</li><li>V 选择行</li><li>Ctrl + v 块选择<br>o 切换方向</li></ul><p>d 删除</p><h3 id="insert-模式"><a href="#insert-模式" class="headerlink" title="insert 模式"></a>insert 模式</h3><p>终端也可以使用<br>ctrl h 删除上一个字符<br>ctrl w 删除上一个单词<br>ctrl u 删除当前行</p><p>ctrl a start<br>ctrl e end<br>ctrl b 前<br>ctrl f 后</p><h2 id="normal-gt-insert"><a href="#normal-gt-insert" class="headerlink" title="normal -&gt; insert"></a>normal -&gt; insert</h2><p>i - insert<br>a - append<br>o - open a line below</p><p>I - insert before line<br>A - append after line<br>O - open a line above</p><p>gi 最后一次编辑并进入插入模式的地方</p><h2 id="我使用-Vim-的几个阶段"><a href="#我使用-Vim-的几个阶段" class="headerlink" title="我使用 Vim 的几个阶段"></a>我使用 Vim 的几个阶段</h2><h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="快速切换-Vim-开关"><a href="#快速切换-Vim-开关" class="headerlink" title="快速切换 Vim 开关"></a>快速切换 Vim 开关</h3><p><code>Ctrl + Shift + p</code> 打开命令面板输入 <code>Toggle Vim Mode</code></p><h3 id="Visual-Studio-Code-的-Vim-设置"><a href="#Visual-Studio-Code-的-Vim-设置" class="headerlink" title="Visual Studio Code 的 Vim 设置"></a>Visual Studio Code 的 Vim 设置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="Chrome-插件-Vimium"><a href="#Chrome-插件-Vimium" class="headerlink" title="Chrome 插件 Vimium"></a>Chrome 插件 Vimium</h3><p><a href="https://chrome.google.com/webstore/detail/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="noopener">Vimium</a> 提供了在浏览器上使用 Vim 快捷键操作。</p><p>j 向下移动网页<br>k 向上移动网页<br>gg 移动到网页顶部<br>G 移动到网页底部</p><p>J、gT向左转一格<br>K，Gt向右转一圈<br>g0 进入第一个标签<br>g$ 转到最后一个标签<br>t 新建标签页<br>x 关闭当前标签<br>X还原已关闭的标签页(即解除’x’命令)<br>搜索您打开的标签</p><p>…</p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://vimjc.com/" target="_blank" rel="noopener">https://vimjc.com/</a><br><a href="https://github.com/VSCodeVim" target="_blank" rel="noopener">https://github.com/VSCodeVim</a><br><a href="https://coding.imooc.com/learn/list/50.html" target="_blank" rel="noopener">https://coding.imooc.com/learn/list/50.html</a><br><a href="https://www.zhihu.com/question/303850876" target="_blank" rel="noopener">https://www.zhihu.com/question/303850876</a><br><a href="https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim" target="_blank" rel="noopener">https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim</a></p><!-- ![](/img/vim-logo.jpg) -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景介绍&quot;&gt;&lt;a href=&quot;#背景介绍&quot; class=&quot;headerlink&quot; title=&quot;背景介绍&quot;&gt;&lt;/a&gt;背景介绍&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Vim 是从 vi 发展出来的一个文本编辑器。和 Emacs 并列成为类 Unix 系统用户最喜欢
+      
+    
+    </summary>
+    
+    
+      <category term="编辑器" scheme="https://www.chengjingchao.com/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    
+    
+      <category term="Vim" scheme="https://www.chengjingchao.com/tags/Vim/"/>
+    
+      <category term="编辑器" scheme="https://www.chengjingchao.com/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
