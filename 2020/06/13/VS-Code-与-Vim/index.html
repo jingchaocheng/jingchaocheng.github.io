@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Vim,编辑器," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Jingchao's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="背景介绍 Vim 是从 vi 发展出来的一个文本编辑器。和 Emacs 并列成为类 Unix 系统用户最喜欢的编辑器。  Vim 提供了一系列很强大的编辑文本的操作方式，可以使用纯键盘完成编辑文本操作。再搭配许多插件可以配置成一个 IDE。但是 Vim 有着一个比较陡峭的学习曲线，并且不是开箱即用的。 如果没有特定的开发环境限制，可以使用 更漂亮易上手的编辑器 (Visual Studio Cod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS Code 与 Vim">
+<meta property="og:url" content="https://www.chengjingchao.com/2020/06/13/VS-Code-%E4%B8%8E-Vim/index.html">
+<meta property="og:site_name" content="Jingchao&#39;s Blog">
+<meta property="og:description" content="背景介绍 Vim 是从 vi 发展出来的一个文本编辑器。和 Emacs 并列成为类 Unix 系统用户最喜欢的编辑器。  Vim 提供了一系列很强大的编辑文本的操作方式，可以使用纯键盘完成编辑文本操作。再搭配许多插件可以配置成一个 IDE。但是 Vim 有着一个比较陡峭的学习曲线，并且不是开箱即用的。 如果没有特定的开发环境限制，可以使用 更漂亮易上手的编辑器 (Visual Studio Cod">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/xp.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/dit.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/vim-install.jpg">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/vscode-status.jpg">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/hjkl.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/w.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/f.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/0.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/percent.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/gg.gif">
+<meta property="og:image" content="https://www.chengjingchao.com/img/vim/gd.gif">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/98581/1595852771272-24b8c12d-7282-4d62-9ce8-34fd49e86429.png#align=left&display=inline&height=540&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1080&originWidth=1265&size=121917&status=done&style=none&width=632.5">
+<meta property="article:published_time" content="2020-06-12T17:15:46.000Z">
+<meta property="article:modified_time" content="2020-08-02T17:19:29.608Z">
+<meta property="article:author" content="Jingchao Cheng">
+<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="编辑器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chengjingchao.com/img/vim/xp.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.chengjingchao.com/2020/06/13/VS-Code-与-Vim/"/>
+
+
+
+
+
+  <title>VS Code 与 Vim | Jingchao's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-169283014-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b4edffcf476eec72f2abf125dc28d3f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jingchao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.chengjingchao.com/2020/06/13/VS-Code-%E4%B8%8E-Vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jingchao Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jingchao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VS Code 与 Vim</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T01:15:46+08:00">
+                2020-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E8%BE%91%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">编辑器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><blockquote>
+<p>Vim 是从 vi 发展出来的一个文本编辑器。和 Emacs 并列成为类 Unix 系统用户最喜欢的编辑器。</p>
+</blockquote>
+<p><code>Vim</code> 提供了一系列很强大的编辑文本的操作方式，可以使用纯键盘完成编辑文本操作。再搭配许多插件可以配置成一个 IDE。但是 <code>Vim</code> 有着一个比较陡峭的学习曲线，并且不是开箱即用的。</p>
+<p>如果没有特定的开发环境限制，可以使用</p>
+<p>更漂亮易上手的编辑器 <code>(Visual Studio Code)</code> + 更流畅的编辑体验 <code>(Vim)</code></p>
+<p>来提高编码效率，各取所长。</p>
+<p>如今市面上几乎所有的 IDE 和编辑器都提供有 Vim 的相关插件。例如我所体验过的</p>
+<ul>
+<li>Sublime Text - <a href="https://github.com/guillermooo/Vintageous" target="_blank" rel="noopener">Vintageous</a>、<a href="https://github.com/guillermooo/Six" target="_blank" rel="noopener">Six</a></li>
+<li>Visual Studio - <a href="https://github.com/VsVim/VsVim" target="_blank" rel="noopener">VsVim</a></li>
+<li>Visual Studio Code - <a href="https://github.com/VSCodeVim/Vim" target="_blank" rel="noopener">Vim</a></li>
+</ul>
+<p>本文的所有操作都基于 <code>Visual Studio Code</code> +  <code>Vim 插件</code> 演示。(虽然我更喜欢 Sublime Text…)</p>
+<hr>
+<h1 id="先来点甜头-例子"><a href="#先来点甜头-例子" class="headerlink" title="先来点甜头 例子"></a>先来点甜头 例子</h1><p>举例几个实际例子，可以想像之前是怎么操作的</p>
+<ol>
+<li><p>字母顺序写反了 <code>ab</code> 写成了 <code>ba</code><br><img src="/img/vim/xp.gif" alt="running"></p>
+</li>
+<li><p>删除 HTML 元素中的内容 / 删除双引号之间的内容<br><img src="/img/vim/dit.gif" alt="running"></p>
+</li>
+</ol>
+<p>…</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
+<li>打开 VS Code 的扩展商店</li>
+<li>搜索 Vim</li>
+<li>点击安装</li>
+</ol>
+<p><img src="/img/vim/vim-install.jpg" alt="running"></p>
+<h1 id="Vim-模式"><a href="#Vim-模式" class="headerlink" title="Vim 模式"></a>Vim 模式</h1><p>模式意味着你的键盘会根据你所使用的模式获得不同的功能。也就是说，根据你所使用的模式，在键盘上键入一个按键会产生不同结果。</p>
+<p>就像主键盘区上方的数字健可以直接按数字键 <code>1</code> 输入 1 也可以通过 <code>shift + 1</code> 输入 <code>！</code>，这样一个健位上就具有了不同的功能。</p>
+<p>常用模式</p>
+<ul>
+<li><code>normal</code> 模式—— <strong>默认模式</strong>，可以通过键盘移动光标、删除字符、复制、粘贴等。</li>
+<li><code>insert</code> 模式—— 正常的输入模式</li>
+<li><code>visual</code> 模式—— 选中文本，类似通过鼠标选择文本</li>
+</ul>
+<p><code>Vim</code> 插件安装完成后，默认是 <code>normal</code> 模式，<code>normal</code> 模式下不能输入文本。按 <code>i</code> 键切换到 <code>insert</code> 模式。</p>
+<p>如何判断编辑器当前所处模式</p>
+<ul>
+<li>通过光标样式判断</li>
+<li>VS Code 底部 status 栏会显示当前模式</li>
+</ul>
+<p><img src="/img/vim/vscode-status.jpg" alt="running"></p>
+<p>安装 Vim 后的副作用</p>
+<ul>
+<li><code>Ctrl + c</code> 不再是复制，而是切换到 <code>normal</code> 模式</li>
+<li><code>Ctrl + v</code> 不再是粘贴，而是进入 <code>visual</code> 模式</li>
+<li><code>Ctrl + f</code> 不再是搜索，而是向前滚动一页</li>
+</ul>
+<p>如果不希望 vim 改变这些健</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 禁用 vim 使用 Ctrl</span></span><br><span class="line"><span class="string">"vim.useCtrlKeys"</span>: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者更精细地控制 Vim 启用或禁用的映射，自行取舍。</span></span><br><span class="line"><span class="string">"vim.handleKeys"</span>: &#123;</span><br><span class="line">  <span class="string">"&lt;C-w&gt;"</span>: <span class="literal">false</span>, <span class="comment">// 禁用 Vim 使用 Ctrl w</span></span><br><span class="line">  <span class="string">"&lt;C-o&gt;"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"&lt;C-n&gt;"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模式切换"><a href="#模式切换" class="headerlink" title="模式切换"></a>模式切换</h2><p>insert 切换 normal</p>
+<ul>
+<li><code>Esc</code></li>
+<li><code>Ctrl + c</code></li>
+<li><code>Ctrl + [</code></li>
+</ul>
+<p>normal 切换 insert</p>
+<ul>
+<li><code>i(insert)</code> 在当前字符前进入 <code>insert</code> 模式</li>
+<li><code>a(append)</code> 在当前字符后进入 <code>insert</code> 模式</li>
+<li><code>o(open)</code> 在当前行下开启新的一行进入 <code>insert</code> 模式</li>
+<li><code>I</code> 在行首进入 <code>insert</code> 模式</li>
+<li><code>A</code> 在行尾进入 <code>insert</code> 模式</li>
+<li><code>O</code> 在当前行上开启新的一行进入 <code>insert</code> 模式</li>
+<li><code>gi</code> 在最后一次 <code>insert</code> 的地方进入 <code>insert</code> 模式</li>
+</ul>
+<h2 id="normal-模式"><a href="#normal-模式" class="headerlink" title="normal 模式"></a>normal 模式</h2><p><code>normal</code> 模式下 <code>hjkl</code> 可以像键盘上的方向键一样上下左右移动光标而不是输入。<code>hjkl</code> 适用于短距离移动。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      ↑</span><br><span class="line">← h j k l →</span><br><span class="line">    ↓</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/vim/hjkl.gif" alt="running"></p>
+<p>数字搭配命令使用，快乐加倍。<br><code>{count}{command}</code></p>
+<h3 id="快速移动"><a href="#快速移动" class="headerlink" title="快速移动"></a>快速移动</h3><p>单词之间移动<br>Vim 中的一个单词是</p>
+<ul>
+<li>字母和数字组成 （w、e、b、ge）</li>
+<li>其他非空白字符序列 (W、E、B、GE)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello vim world</span><br><span class="line">HelloVimWorld()&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>w</code> 移动至下个单词开头</li>
+<li><code>e(end)</code> 移动至下个单词结尾 end</li>
+<li><code>b(back)</code> 移动至上个单词开头 back</li>
+<li><code>ge</code> 移动至上个单词末尾</li>
+<li><code>gE</code></li>
+</ul>
+<p>以上命令还可大写，大小写的区别在于单词的范围不同。</p>
+<ul>
+<li>小写只由字母组成的单词</li>
+<li>大写是以非空白符分割的单词</li>
+</ul>
+<p><code>{n}w/e/b/ge/gE</code> 跳转第几个单词</p>
+<p><img src="/img/vim/w.gif" alt="running"></p>
+<hr>
+
+<p>行间搜索移动</p>
+<ul>
+<li><code>f{character}</code> 移至行中下一个出现的字符</li>
+<li><code>F{character}</code> 移至行中上一个出现的字符</li>
+<li><code>t{character}</code> 移至行中下一个出现的字符前</li>
+<li><code>T{character}</code> 移至行中上一个出现的字符后</li>
+</ul>
+<p>重复查找上次的搜索命令，避免再次输入。</p>
+<ul>
+<li><code>;</code> 下一个</li>
+<li><code>,</code> 上一个</li>
+<li><code>{n};</code> 第 n 个</li>
+</ul>
+<p><img src="/img/vim/f.gif" alt="running"></p>
+<hr>
+
+<p>水平移动</p>
+<ul>
+<li><code>0</code> 移至行首</li>
+<li><code>^</code> 移至行首的非空白字符</li>
+<li><code>$</code> 移至行尾</li>
+<li><code>g_</code> 移至行尾的非空白字符</li>
+</ul>
+<p><img src="/img/vim/0.gif" alt="running"></p>
+<hr>
+
+<p>垂直移动</p>
+<ul>
+<li><code>(</code> 上个句子</li>
+<li><code>)</code> 下个句子</li>
+<li><code>{</code> 上个段落</li>
+<li><code>}</code> 下个段落</li>
+<li><code>%</code> 移动光标到括号的另一半包括 () [] {}</li>
+</ul>
+<p>段落和句子都是以空行来分割。</p>
+<p><img src="/img/vim/percent.gif" alt="running"></p>
+<hr>
+
+<p>页面移动</p>
+<ul>
+<li><code>gg</code> 第一行</li>
+<li><code>G</code> 最后一行</li>
+<li><code>{n}gg/{n}G</code> 移动到第 n 行</li>
+<li><code>H(head)</code> 移动到屏幕顶部</li>
+<li><code>M(middle)</code> 移动到屏幕中间</li>
+<li><code>L(lower)</code> 移动到屏幕低部</li>
+<li><code>zz</code> 当前行放到屏幕中间</li>
+</ul>
+<p><img src="/img/vim/gg.gif" alt="running"></p>
+<hr>
+
+<p>语义移动</p>
+<ul>
+<li><code>gd</code> 跳转到定义</li>
+<li><code>gf</code> 跳转到导入的源文件</li>
+<li><code>gh</code> 相当于将鼠标悬停在光标所在的位置。</li>
+</ul>
+<p><img src="/img/vim/gd.gif" alt="running"></p>
+<h1 id="文本对象"><a href="#文本对象" class="headerlink" title="文本对象"></a>文本对象</h1><p>文本对象可以理解为范围，hjkl 移动是以一个字符为单位移动。<br>使用文本对象可以更大范围的移动操作</p>
+<ul>
+<li><code>w</code> 单词</li>
+<li><code>s</code> 句子</li>
+<li><code>p</code> 段落</li>
+<li><code>(</code> 被 { 包围的块</li>
+<li><code>{</code> 被 ( 包围的块</li>
+<li><code>&#39;</code> 被 ‘ 包围的块</li>
+<li><code>&quot;</code> 被 “ 包围的块</li>
+<li><code>t</code> 被 html 标签包围的块</li>
+</ul>
+<h3 id="快速删除"><a href="#快速删除" class="headerlink" title="快速删除"></a>快速删除</h3><p>d (delete)</p>
+<ul>
+<li><code>dd</code> 删除当前行</li>
+<li><code>{n}dd</code> 删除 n 行</li>
+<li><code>df{character}</code> 从当前字符向后删除到目标字符</li>
+<li><code>dF{character}</code> 从当前字符向前删除到目标字符</li>
+<li><code>dt{character}</code> 从当前字符向后删除到目标字符前</li>
+<li><code>dT{character}</code> 从当前字符向前删除到目标字符后</li>
+<li><code>x</code> 删除一个字符</li>
+<li><code>{n}x</code> 删除 n 个字符</li>
+</ul>
+<p>配合水平移动删除</p>
+<ul>
+<li><code>d$ = D</code> 从当前字符删除到行尾</li>
+<li><code>d0</code> 从当前字符删除到行尾</li>
+</ul>
+<p>配合文本对象删除</p>
+<ul>
+<li><code>dw</code> 从光标向后删除单词</li>
+<li><code>db</code> 从光标向前删除单词</li>
+<li><code>daw</code> 删除当前单词包含单词后的空格</li>
+<li><code>diw</code> 删除当前单词</li>
+<li><code>dat</code></li>
+<li><code>dit</code></li>
+<li><code>da(</code></li>
+<li><code>di(</code></li>
+<li><code>da{</code></li>
+<li><code>di{</code></li>
+<li><code>da&quot;</code></li>
+<li><code>di&quot;</code></li>
+<li><code>da&#39;</code></li>
+<li><code>di&#39;</code></li>
+</ul>
+<p>i(inner) 当前文本对象的全部内容<br>a(around) 当前文本对象的全部内容加内容后面的空格</p>
+<h3 id="快速修改"><a href="#快速修改" class="headerlink" title="快速修改"></a>快速修改</h3><ul>
+<li><code>r(replace)</code> 替一个字符</li>
+<li><code>s</code> 删除当前字符进入到 insert 模式</li>
+<li><code>S</code> 删除当前行字符进入到 insert 模式</li>
+</ul>
+<p>c (change)<br>c(change) 与 d(delete) 命令类似，可是把上面操作中的 d 换成 c。只是 c 操作后会进入到 insert 模式</p>
+<p>C 删除到行尾进入 insert 模式<br>s substitute<br>,1 ,2,3</p>
+<p>S<br>C 删除到行尾<br>：<br>4s<br>c2w<br>cw caw  ciw<br>dw daw</p>
+<h2 id="Command-模式"><a href="#Command-模式" class="headerlink" title="Command 模式"></a>Command 模式</h2><p>:w<br>:q<br>:wq<br>:vs<br>:sp</p>
+<h2 id="Visual-模式"><a href="#Visual-模式" class="headerlink" title="Visual 模式"></a>Visual 模式</h2><ul>
+<li>normal 模式下使用 v 进入 visual 选择</li>
+<li>V 选择行</li>
+<li>Ctrl + v 块选择<br>o 切换方向</li>
+</ul>
+<p>d 删除</p>
+<h2 id="insert-模式"><a href="#insert-模式" class="headerlink" title="insert 模式"></a>insert 模式</h2><ul>
+<li><code>ctrl h</code> 删除上一个字符</li>
+<li><code>ctrl w</code> 删除上一个单词</li>
+<li><code>ctrl u</code> 删除当前行</li>
+<li><code>ctrl a</code> 移动到行首</li>
+<li><code>ctrl e</code> 移动到行尾</li>
+<li><code>ctrl b</code> 向前移动</li>
+<li><code>ctrl f</code> 向后移动</li>
+</ul>
+<p>终端中也可以使用</p>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>vim 操作的是寄存器而不是系统剪贴板<br>Vim 的删除、复制与粘贴命令均需要使用 Vim 寄存器。通过在命令前加 “寄存器名 前缀的方式可指定寄存器，否则 Vim 将缺省使用无名寄存器。若想在 Vim 和操作系统外部程序间共享复制内容，则必须使用 Vim 系统剪贴板。</p>
+<p>默认使用「无名寄存器」””p === p<br>:reg name 查看寄存器内容<br>xp 删除粘贴</p>
+<p>有名寄存器 a-z<br>Vim 提供了一组以 26 个英文字母命名的有名寄存器。用小写字母引用有名寄存器会覆盖该寄存器的原有内容，而用大写字母引用则会将新内容 追加 到该寄存器的原有内容之后。</p>
+<p>“{} 指定寄存器<br>“” 默认使用无名寄存器</p>
+<p>“0 复制寄存器<br>“+ 系统剪贴板<br>“% 当前文件名<br>“. 上次插入的文本</p>
+<h1 id="Vim-宏-marcro"><a href="#Vim-宏-marcro" class="headerlink" title="Vim 宏 marcro"></a>Vim 宏 marcro</h1><blockquote>
+<p>可以看作是一些系列命令的集合，可以录制一系列操作然后用于「回放」</p>
+</blockquote>
+<p>(1) 在Vim命令行模式下，按下 :q寄存器名 后开始进入宏录制状态，vim编辑器左下角会显示”记录中”或”recording”</p>
+<p>q 开始结束录制<br>录制保存在寄存器中<br>q{a} 保存在 a 寄存器中 @a 回放<br>@ 回放</p>
+<h1 id="我使用-Vim-的几个阶段"><a href="#我使用-Vim-的几个阶段" class="headerlink" title="我使用 Vim 的几个阶段"></a>我使用 Vim 的几个阶段</h1><h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
+<li><code>xp</code> 交换两个字符位置</li>
+<li><code>ddp</code> 上下行交换</li>
+</ul>
+<p>VS Code快速切换 Vim 开关<br><code>Ctrl + Shift + p</code> 打开命令面板输入 <code>Toggle Vim Mode</code></p>
+<ul>
+<li><code>.</code> 重复最后一次修改</li>
+</ul>
+<h2 id="Visual-Studio-Code-的-Vim-设置"><a href="#Visual-Studio-Code-的-Vim-设置" class="headerlink" title="Visual Studio Code 的 Vim 设置"></a>Visual Studio Code 的 Vim 设置</h2><p><a href="https://github.com/VSCodeVim/Vim#vscodevim-settings" target="_blank" rel="noopener">Vim 插件文档</a></p>
+<h3 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h3><h3 id="Snake"><a href="#Snake" class="headerlink" title="Snake"></a>Snake</h3><h3 id="EasyMotion"><a href="#EasyMotion" class="headerlink" title="EasyMotion"></a>EasyMotion</h3><p>spance spance w 跳转<br><img src="https://cdn.nlark.com/yuque/0/2020/png/98581/1595852771272-24b8c12d-7282-4d62-9ce8-34fd49e86429.png#align=left&display=inline&height=540&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1080&originWidth=1265&size=121917&status=done&style=none&width=632.5" alt="image.png"></p>
+<h2 id="Chrome-插件-Vimium"><a href="#Chrome-插件-Vimium" class="headerlink" title="Chrome 插件 Vimium"></a>Chrome 插件 Vimium</h2><p><a href="https://chrome.google.com/webstore/detail/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="noopener">Vimium</a> 提供了在浏览器上使用 Vim 功能</p>
+<ul>
+<li><code>j</code> 向下移动网页</li>
+<li><code>k</code> 向上移动网页</li>
+<li><code>gg</code> 移动到网页顶部</li>
+<li><code>G</code> 移动到网页底部</li>
+<li><code>J</code> 上一个标签页</li>
+<li><code>K</code> 下一个标签页<br>…</li>
+</ul>
+<h1 id="让键盘适应工具"><a href="#让键盘适应工具" class="headerlink" title="让键盘适应工具"></a>让键盘适应工具</h1><p>可以选择 ESC 和 Ctrl 比较容易触碰的键盘，或者把 CapsLock 映射成 Ctrl。<br>根据自己需求选择</p>
+<p>HHKB<br>Poker2<br>图片</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://vimjc.com/" target="_blank" rel="noopener">https://vimjc.com/</a><br><a href="https://github.com/VSCodeVim" target="_blank" rel="noopener">https://github.com/VSCodeVim</a><br><a href="https://coding.imooc.com/learn/list/50.html" target="_blank" rel="noopener">https://coding.imooc.com/learn/list/50.html</a><br><a href="https://www.zhihu.com/question/303850876" target="_blank" rel="noopener">https://www.zhihu.com/question/303850876</a><br><a href="https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim" target="_blank" rel="noopener">https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vim/" rel="tag"># Vim</a>
+          
+            <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/" rel="tag"># 编辑器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/01/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/27/%E5%86%99%E5%9C%A8%E8%BF%9E%E7%BB%AD%E8%B7%91%E6%AD%A5-99-%E5%91%A8/" rel="prev" title="写在连续跑步 99 周">
+                写在连续跑步 99 周 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jingchao Cheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先来点甜头-例子"><span class="nav-number">2.</span> <span class="nav-text">先来点甜头 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-模式"><span class="nav-number">4.</span> <span class="nav-text">Vim 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式切换"><span class="nav-number">4.1.</span> <span class="nav-text">模式切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normal-模式"><span class="nav-number">4.2.</span> <span class="nav-text">normal 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速移动"><span class="nav-number">4.2.1.</span> <span class="nav-text">快速移动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本对象"><span class="nav-number">5.</span> <span class="nav-text">文本对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速删除"><span class="nav-number">5.0.1.</span> <span class="nav-text">快速删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速修改"><span class="nav-number">5.0.2.</span> <span class="nav-text">快速修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-模式"><span class="nav-number">5.1.</span> <span class="nav-text">Command 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-模式"><span class="nav-number">5.2.</span> <span class="nav-text">Visual 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-模式"><span class="nav-number">5.3.</span> <span class="nav-text">insert 模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器"><span class="nav-number">6.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-宏-marcro"><span class="nav-number">7.</span> <span class="nav-text">Vim 宏 marcro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我使用-Vim-的几个阶段"><span class="nav-number">8.</span> <span class="nav-text">我使用 Vim 的几个阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">9.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-Studio-Code-的-Vim-设置"><span class="nav-number">9.1.</span> <span class="nav-text">Visual Studio Code 的 Vim 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#光标"><span class="nav-number">9.1.1.</span> <span class="nav-text">光标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Snake"><span class="nav-number">9.1.2.</span> <span class="nav-text">Snake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EasyMotion"><span class="nav-number">9.1.3.</span> <span class="nav-text">EasyMotion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome-插件-Vimium"><span class="nav-number">9.2.</span> <span class="nav-text">Chrome 插件 Vimium</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让键盘适应工具"><span class="nav-number">10.</span> <span class="nav-text">让键盘适应工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">11.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jingchao Cheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
