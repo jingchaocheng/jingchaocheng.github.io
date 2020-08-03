@@ -100,9 +100,8 @@
 <meta property="og:image" content="https://www.chengjingchao.com/img/vim/percent.gif">
 <meta property="og:image" content="https://www.chengjingchao.com/img/vim/gg.gif">
 <meta property="og:image" content="https://www.chengjingchao.com/img/vim/gd.gif">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/98581/1595852771272-24b8c12d-7282-4d62-9ce8-34fd49e86429.png#align=left&display=inline&height=540&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1080&originWidth=1265&size=121917&status=done&style=none&width=632.5">
 <meta property="article:published_time" content="2020-06-12T17:15:46.000Z">
-<meta property="article:modified_time" content="2020-08-02T17:19:29.608Z">
+<meta property="article:modified_time" content="2020-08-03T16:56:19.334Z">
 <meta property="article:author" content="Jingchao Cheng">
 <meta property="article:tag" content="Vim">
 <meta property="article:tag" content="编辑器">
@@ -429,7 +428,7 @@
 <li><code>Ctrl + f</code> 不再是搜索，而是向前滚动一页</li>
 </ul>
 <p>如果不希望 vim 改变这些健</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 禁用 vim 使用 Ctrl</span></span><br><span class="line"><span class="string">"vim.useCtrlKeys"</span>: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者更精细地控制 Vim 启用或禁用的映射，自行取舍。</span></span><br><span class="line"><span class="string">"vim.handleKeys"</span>: &#123;</span><br><span class="line">  <span class="string">"&lt;C-w&gt;"</span>: <span class="literal">false</span>, <span class="comment">// 禁用 Vim 使用 Ctrl w</span></span><br><span class="line">  <span class="string">"&lt;C-o&gt;"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"&lt;C-n&gt;"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 禁用 vim 使用 Ctrl</span></span><br><span class="line"><span class="string">"vim.useCtrlKeys"</span>: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者更精细地控制 Vim 启用或禁用的映射，自行取舍。</span></span><br><span class="line"><span class="string">"vim.handleKeys"</span>: &#123;</span><br><span class="line">  <span class="string">"&lt;C-w&gt;"</span>: <span class="literal">false</span>, <span class="comment">// 禁用 Vim 使用 Ctrl w</span></span><br><span class="line">  <span class="string">"&lt;C-o&gt;"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"&lt;C-n&gt;"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tips: 禁用 Ctrl 键后，下面的 Vim 中包含 Ctrl 的操作将失效。</span><br></pre></td></tr></table></figure>
 
 <h2 id="模式切换"><a href="#模式切换" class="headerlink" title="模式切换"></a>模式切换</h2><p>insert 切换 normal</p>
 <ul>
@@ -552,47 +551,121 @@
 <li><code>dF{character}</code> 从当前字符向前删除到目标字符</li>
 <li><code>dt{character}</code> 从当前字符向后删除到目标字符前</li>
 <li><code>dT{character}</code> 从当前字符向前删除到目标字符后</li>
-<li><code>x</code> 删除一个字符</li>
+<li><code>x = dl</code> 删除一个字符</li>
+<li><code>X = dh</code> 删除前一个字符</li>
 <li><code>{n}x</code> 删除 n 个字符</li>
 </ul>
-<p>配合水平移动删除</p>
+<p> 配合水平移动删除</p>
 <ul>
+<li><code>d^</code> 从当前字符删除到行首</li>
+<li><code>d0</code> 从当前字符删除到行首</li>
 <li><code>d$ = D</code> 从当前字符删除到行尾</li>
-<li><code>d0</code> 从当前字符删除到行尾</li>
+<li><code>dg_</code> 从当前字符删除到行尾</li>
 </ul>
 <p>配合文本对象删除</p>
 <ul>
 <li><code>dw</code> 从光标向后删除单词</li>
+<li><code>d{n}w</code> 从光标向后删除 n 个单词</li>
+<li><code>d{n}aw</code> 从当前单词向后删除 n 个单词</li>
 <li><code>db</code> 从光标向前删除单词</li>
-<li><code>daw</code> 删除当前单词包含单词后的空格</li>
-<li><code>diw</code> 删除当前单词</li>
-<li><code>dat</code></li>
-<li><code>dit</code></li>
-<li><code>da(</code></li>
-<li><code>di(</code></li>
-<li><code>da{</code></li>
-<li><code>di{</code></li>
-<li><code>da&quot;</code></li>
-<li><code>di&quot;</code></li>
-<li><code>da&#39;</code></li>
-<li><code>di&#39;</code></li>
+<li><code>diw</code> 删除单词</li>
+<li><code>daw</code> 删除单词 + 单词后的空格</li>
+<li><code>dit</code> 删除 html 标签包裹的内容</li>
+<li><code>dat</code> 删除 html 标签 + 包裹的内容</li>
+<li><code>di(</code> 删除 () 包裹的内容</li>
+<li><code>da(</code> 删除 () + 包裹的内容</li>
+<li><code>di{</code> 删除 {} 包裹的内容</li>
+<li><code>da{</code> 删除 {} + 包裹的内容</li>
+<li><code>di&quot;</code> 删除 “” 包裹的内容</li>
+<li><code>da&quot;</code> 删除 “” + 包裹的内容</li>
+<li><code>di&#39;</code> 删除 ‘’ 包裹的内容</li>
+<li><code>da&#39;</code> 删除 ‘’ + 包裹的内容</li>
 </ul>
-<p>i(inner) 当前文本对象的全部内容<br>a(around) 当前文本对象的全部内容加内容后面的空格</p>
-<h3 id="快速修改"><a href="#快速修改" class="headerlink" title="快速修改"></a>快速修改</h3><ul>
-<li><code>r(replace)</code> 替一个字符</li>
-<li><code>s</code> 删除当前字符进入到 insert 模式</li>
-<li><code>S</code> 删除当前行字符进入到 insert 模式</li>
+<p>i - inner<br>a - around</p>
+<h3 id="快速修改"><a href="#快速修改" class="headerlink" title="快速修改"></a>快速修改</h3><p>r (replace)</p>
+<ul>
+<li><code>r</code> 替一个字符</li>
 </ul>
-<p>c (change)<br>c(change) 与 d(delete) 命令类似，可是把上面操作中的 d 换成 c。只是 c 操作后会进入到 insert 模式</p>
-<p>C 删除到行尾进入 insert 模式<br>s substitute<br>,1 ,2,3</p>
-<p>S<br>C 删除到行尾<br>：<br>4s<br>c2w<br>cw caw  ciw<br>dw daw</p>
-<h2 id="Command-模式"><a href="#Command-模式" class="headerlink" title="Command 模式"></a>Command 模式</h2><p>:w<br>:q<br>:wq<br>:vs<br>:sp</p>
-<h2 id="Visual-模式"><a href="#Visual-模式" class="headerlink" title="Visual 模式"></a>Visual 模式</h2><ul>
-<li>normal 模式下使用 v 进入 visual 选择</li>
-<li>V 选择行</li>
-<li>Ctrl + v 块选择<br>o 切换方向</li>
+<p>c (change)</p>
+<ul>
+<li>c 的命令基本可以把上面快速删除中的 d 都替换成 c。唯一区别是 c 最后会进入到 insert 模式。</li>
 </ul>
-<p>d 删除</p>
+<p>s</p>
+<ul>
+<li><code>s = ch</code> 删除光标下的字符并进入 insert 模式</li>
+<li><code>{n}s</code> 删除 n 个字符并进入 insert 模式</li>
+<li><code>S</code> 删除当前行并进入 insert 模式</li>
+<li><code>~</code> 切换单个字符大小写</li>
+<li><code>g~</code> 当前行所有字符字符切换大小写</li>
+</ul>
+<h2 id="Command-模式"><a href="#Command-模式" class="headerlink" title="Command 模式"></a>Command 模式</h2><p>VS Code 只支持部分 Vim 的 command 命令。<br>运行命令以 : 开头</p>
+<ul>
+<li><code>:edit {relative-path-to-file} = :e {path}</code> 打开或创建文件 建议创建文件使用，打开文件使用 Ctrl + p<br>相对路径是相对的当前打开文件。</li>
+</ul>
+<p>保存和关闭文件</p>
+<ul>
+<li><code>:write = :w</code> 保存文件</li>
+<li><code>:quit = :q</code> 关闭文件</li>
+<li><code>:wq</code> 保存并关闭</li>
+</ul>
+<p>如果文件未更改或为只读则将失败。同样，:quit将关闭文件，但如果文件未保存的更改将失败。<br>后面加 ! 强制执行</p>
+<ul>
+<li><code>:wall = :wa</code> 保存所有文件</li>
+<li><code>:qall = :qa</code> 关闭所有文件</li>
+<li><code>:wqall = :wqa</code> 保存和关闭所有文件</li>
+<li><code>:qall! = :qa!</code> 关闭所有文件不保存</li>
+</ul>
+<p>删除/修改/复制 d c y<br><code>:[range]command[options]</code></p>
+<ul>
+<li><code>:[range]delete [register]</code> 删除多行到寄存器</li>
+<li><code>·@:</code> 重复上一个ex命令</li>
+<li><code>·@@</code> 重复一次后，您可以继续重复此操作</li>
+</ul>
+<p>command 模式范围<br>:{start},{end} 起始行到结束行 1,2d<br>:{start},{offset} 起始行和偏移范围 1,+2d</p>
+<ul>
+<li><code>.</code> 当前行 .,+2d</li>
+<li><code>%</code> 整个文件 %d</li>
+<li><code>0</code> 文件开头 0,10d</li>
+<li><code>$</code> 文件结尾 10,$d</li>
+<li><code>:&#39;&lt;,&#39;&gt;</code></li>
+</ul>
+<h3 id="command-替换"><a href="#command-替换" class="headerlink" title="command 替换"></a>command 替换</h3><p><code>:[range]s/{pattern}/{substitute}/{flags}</code></p>
+<ul>
+<li><code>range</code> 范围</li>
+<li><code>s/</code> 当前行</li>
+<li><code>%s</code> 整个文件</li>
+<li><code>pattern</code> 搜索模式 支持正则</li>
+<li><code>substitute</code> 要替换的文本</li>
+<li><code>flags</code> 选项<ul>
+<li><code>-g</code> 全局</li>
+<li><code>-i</code> 不区分大小写</li>
+<li><code>-c</code> 确认每一次替换</li>
+</ul>
+</li>
+<li><code>:s/led/gold</code> 当前行第一个 led =&gt; gold</li>
+<li><code>:s/led/gold/g</code> 全局</li>
+</ul>
+<h3 id="command-模式搜索"><a href="#command-模式搜索" class="headerlink" title="command 模式搜索"></a>command 模式搜索</h3><p>搜索以 / 或 ？ 开头</p>
+<ul>
+<li><code>/{pattern}</code> 向后搜索 pattern 是个正则表达式</li>
+<li><code>?{pattern}</code> 向前搜索</li>
+<li><code>/ = n</code> 下一个匹配项 重复搜索</li>
+<li><code>？= N</code> 上一个匹配项</li>
+<li><code>gn</code> 选中下一个匹配项</li>
+<li><code>gN</code> 选中上一个匹配项</li>
+<li><code>dgn</code> 删除下一个匹配项</li>
+<li><code>dgN</code> 删除上一个匹配项</li>
+</ul>
+<h2 id="Visual-模式"><a href="#Visual-模式" class="headerlink" title="Visual 模式"></a>Visual 模式</h2><blockquote>
+<p>Visual 模式相当于用鼠标选择文本，但是在 Vim 中你可以用键盘来完成。</p>
+</blockquote>
+<ul>
+<li><code>v</code> 逐字符选择文本</li>
+<li><code>V</code> 逐行选择文本</li>
+<li><code>Ctrl + v</code> 使用矩形块选择文本</li>
+<li><code>o</code> 切换选择方向</li>
+<li><code>d</code> 删除</li>
+</ul>
 <h2 id="insert-模式"><a href="#insert-模式" class="headerlink" title="insert 模式"></a>insert 模式</h2><ul>
 <li><code>ctrl h</code> 删除上一个字符</li>
 <li><code>ctrl w</code> 删除上一个单词</li>
@@ -603,26 +676,109 @@
 <li><code>ctrl f</code> 向后移动</li>
 </ul>
 <p>终端中也可以使用</p>
-<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>vim 操作的是寄存器而不是系统剪贴板<br>Vim 的删除、复制与粘贴命令均需要使用 Vim 寄存器。通过在命令前加 “寄存器名 前缀的方式可指定寄存器，否则 Vim 将缺省使用无名寄存器。若想在 Vim 和操作系统外部程序间共享复制内容，则必须使用 Vim 系统剪贴板。</p>
-<p>默认使用「无名寄存器」””p === p<br>:reg name 查看寄存器内容<br>xp 删除粘贴</p>
-<p>有名寄存器 a-z<br>Vim 提供了一组以 26 个英文字母命名的有名寄存器。用小写字母引用有名寄存器会覆盖该寄存器的原有内容，而用大写字母引用则会将新内容 追加 到该寄存器的原有内容之后。</p>
-<p>“{} 指定寄存器<br>“” 默认使用无名寄存器</p>
-<p>“0 复制寄存器<br>“+ 系统剪贴板<br>“% 当前文件名<br>“. 上次插入的文本</p>
-<h1 id="Vim-宏-marcro"><a href="#Vim-宏-marcro" class="headerlink" title="Vim 宏 marcro"></a>Vim 宏 marcro</h1><blockquote>
+<h1 id="复制粘贴"><a href="#复制粘贴" class="headerlink" title="复制粘贴"></a>复制粘贴</h1><p>在 Vim 中</p>
+<ul>
+<li><code>y</code> 复制</li>
+<li><code>Y</code> 复制当前行</li>
+<li><code>p</code> 在当前字符后粘贴</li>
+<li><code>p</code> 在当前字符前粘贴</li>
+<li><code>yyp</code> 重复当前行</li>
+<li><code>ddp</code> 交换上下行</li>
+<li><code>xp</code> 交换字符</li>
+<li><code>yl</code> 复制当前字符</li>
+</ul>
+<p>配合文本对象使用</p>
+<ul>
+<li><code>yaw</code> 复制一个单词</li>
+<li><code>yas</code> 复制一个单词</li>
+<li><code>yi(</code></li>
+<li><code>yip</code></li>
+<li><code>yap</code></li>
+</ul>
+<h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><p>寄存器是一个特殊的剪贴板，你可以选择在其中一次保存多个内容。就像有很多盒子，你可以自由的选择将复制、删除的内容放在哪个盒子中，需要的时候可以自由拿出来(粘贴)。Vim 的删除、复制与粘贴命令均需要使用 Vim 寄存器。</p>
+<p>通过在命令前加 <code>&quot;寄存器名</code> 前缀的方式可指定寄存器，否则 Vim 将缺省使用无名寄存器。</p>
+<p>若想在 Vim 和操作系统外部程序间共享复制内容，则必须使用 Vim 系统剪贴板。</p>
+<ul>
+<li><code>&quot;&quot;</code> 无名寄存器 默认使用「无名寄存器」<code>&quot;&quot;p === p</code></li>
+<li><code>&quot;[a-z]</code> 有名寄存器，以 26 个英文字母命名，使用小写字母引用有名寄存器会覆盖该寄存器的原有内容，而用大写字母引用则会将新内容 追加 到该寄存器的原有内容之后。</li>
+</ul>
+<p>特殊寄存器</p>
+<ul>
+<li><code>&quot;0</code> 复制寄存器</li>
+<li><code>&quot;+</code> 系统剪贴板</li>
+<li><code>&quot;%</code> 当前文件名</li>
+<li><code>&quot;.</code> 上次插入的文本</li>
+<li><code>&quot;[1-9]</code> 存储最后 9 次删除或更改命令的内容</li>
+<li><code>:reg {name}</code> 查看寄存器内容</li>
+</ul>
+<h1 id="Vim-宏-marcro）"><a href="#Vim-宏-marcro）" class="headerlink" title="Vim 宏 (marcro）"></a>Vim 宏 (marcro）</h1><blockquote>
 <p>可以看作是一些系列命令的集合，可以录制一系列操作然后用于「回放」</p>
 </blockquote>
-<p>(1) 在Vim命令行模式下，按下 :q寄存器名 后开始进入宏录制状态，vim编辑器左下角会显示”记录中”或”recording”</p>
-<p>q 开始结束录制<br>录制保存在寄存器中<br>q{a} 保存在 a 寄存器中 @a 回放<br>@ 回放</p>
-<h1 id="我使用-Vim-的几个阶段"><a href="#我使用-Vim-的几个阶段" class="headerlink" title="我使用 Vim 的几个阶段"></a>我使用 Vim 的几个阶段</h1><h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
-<li><code>xp</code> 交换两个字符位置</li>
-<li><code>ddp</code> 上下行交换</li>
-</ul>
-<p>VS Code快速切换 Vim 开关<br><code>Ctrl + Shift + p</code> 打开命令面板输入 <code>Toggle Vim Mode</code></p>
+<p>在 normal 模式下，按下 <code>q{register}</code> 后开始进入宏录制状态，<code>VS Code</code> 编辑器左下角会显示 <code>Recording</code></p>
 <ul>
-<li><code>.</code> 重复最后一次修改</li>
+<li><code>q{register}</code> 开始录制 再按 <code>q</code> 结束录制 录制保存在寄存器中</li>
+<li><code>@a</code> 回放保存在 <code>a</code> 寄存器中的操作</li>
+<li><code>@@</code> 重复上次回放</li>
+<li><code>{n}@{register}</code></li>
 </ul>
-<h2 id="Visual-Studio-Code-的-Vim-设置"><a href="#Visual-Studio-Code-的-Vim-设置" class="headerlink" title="Visual Studio Code 的 Vim 设置"></a>Visual Studio Code 的 Vim 设置</h2><p><a href="https://github.com/VSCodeVim/Vim#vscodevim-settings" target="_blank" rel="noopener">Vim 插件文档</a></p>
-<h3 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h3><h3 id="Snake"><a href="#Snake" class="headerlink" title="Snake"></a>Snake</h3><h3 id="EasyMotion"><a href="#EasyMotion" class="headerlink" title="EasyMotion"></a>EasyMotion</h3><p>spance spance w 跳转<br><img src="https://cdn.nlark.com/yuque/0/2020/png/98581/1595852771272-24b8c12d-7282-4d62-9ce8-34fd49e86429.png#align=left&display=inline&height=540&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1080&originWidth=1265&size=121917&status=done&style=none&width=632.5" alt="image.png"></p>
+<p>Example</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rusty sword,obsidian dagger,silver poniard,broadsword 转换成</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>rusty sword<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>obsidian sword<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>silver poniard<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>broadsword poniard<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>VS Code 中内置了许多有用的 Vim <a href="https://github.com/VSCodeVim/Vim#-emulated-plugins" target="_blank" rel="noopener">插件</a>。</p>
+<h2 id="vim-suround"><a href="#vim-suround" class="headerlink" title="vim-suround"></a>vim-suround</h2><p>默认启用</p>
+<ul>
+<li><code>ds</code> 删除</li>
+<li><code>cs</code> 更改</li>
+<li><code>ys</code> 添加</li>
+</ul>
+<p>Example</p>
+<ul>
+<li><code>ds&#39;</code> 删除周围的 <code>&#39;</code></li>
+<li><code>ds(</code></li>
+<li><code>ds[</code></li>
+<li><code>ds{</code></li>
+<li><code>cs&quot;&#39;</code> 把 <code>&quot;</code> 改成 <code>&#39;</code></li>
+</ul>
+<h2 id="vim-sneak"><a href="#vim-sneak" class="headerlink" title="vim-sneak"></a>vim-sneak</h2><p>默认禁用，setting.json 中 <code>vim.sneak: true</code> 开启。</p>
+<ul>
+<li><code>s{char}{char}</code> 类似 f 命令，不过现在 s 可以搜索两个字符更容易定位。</li>
+<li><code>S{char}{char}</code> 向上搜索</li>
+</ul>
+<h2 id="Input-Method"><a href="#Input-Method" class="headerlink" title="Input Method"></a>Input Method</h2><p>在插入模式输入中文再进入到 normal 模式后，需要切换回英文输入法。<code>Input Method</code> 避免了这种问题。<br>使用方法参考 <a href="https://www.zhihu.com/question/303850876" target="_blank" rel="noopener">如何解决VSCode Vim中文输入法切换问题？</a></p>
+<h2 id="vim-easymotion"><a href="#vim-easymotion" class="headerlink" title="vim-easymotion"></a>vim-easymotion</h2><p>默认禁用，setting.json 中 <code>vim.easymotion: true</code> 开启。</p>
+<p>easymotion 试图通过消除记数来简化 Vim 中运动的使用。当使用 easymotion 时，它会使用叠加层（在相关文字上方）标识。输入该标识跳转过去。easymotion 适用于四处移动。</p>
+<p>“vim.leader”: “space” 可以自行映射 leader 键盘。</p>
+<ul>
+<li><code>&lt;leader&gt;&lt;leader&gt;w</code> 标记后面所有单词的开头</li>
+<li><code>&lt;leader&gt;&lt;leader&gt;b</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;bdw</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;e</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;ge</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;j</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;k</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;f{char}</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;F{char}</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;t{char}</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;T{char}</code></li>
+<li><code>&lt;leader&gt;&lt;leader&gt;s{char}</code></li>
+</ul>
+<h1 id="Setting"><a href="#Setting" class="headerlink" title="Setting"></a>Setting</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// VS Code setting.json 中设置</span></span><br><span class="line"><span class="string">"editor.lineNumbers"</span>: <span class="string">"relative"</span>, <span class="comment">// 设置相对行号</span></span><br><span class="line"><span class="string">"vim.cursorStylePerMode.normal"</span>: <span class="string">"underline"</span>, <span class="comment">// 设置 normal 模式下光标为下划线</span></span><br><span class="line"><span class="string">"vim.leader"</span>: <span class="string">"&lt;Space&gt;"</span>, <span class="comment">// 自定义空格 leader 键 默认是 /</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义映射 使其更适应你的工作方式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. insert 模式下输入 jj 进入到 normal 模式 jj =&gt; ESC</span></span><br><span class="line"><span class="string">"vim.insertModeKeyBindingsNonRecursive"</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"before"</span>: [<span class="string">"j"</span>, <span class="string">"j"</span>],</span><br><span class="line">    <span class="string">"after"</span>: [<span class="string">"&lt;ESC&gt;"</span>]</span><br><span class="line">  &#125;</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 更快速的移动 normal 模式下 J =&gt; 5j，K =&gt; 5k</span></span><br><span class="line"><span class="string">"vim.normalModeKeyBindingsNonRecursive"</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"before"</span>: [<span class="string">"J"</span>],</span><br><span class="line">    <span class="string">"after"</span>: [<span class="string">"5"</span>, <span class="string">"j"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"before"</span>: [<span class="string">"K"</span>],</span><br><span class="line">    <span class="string">"after"</span>: [<span class="string">"5"</span>, <span class="string">"k"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 映射到 VS Code 的命令 space + w =&gt; workbench.action.files.save</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"before"</span>: [<span class="string">"leader"</span>, <span class="string">"w"</span>],</span><br><span class="line">    <span class="string">"commands"</span>: [</span><br><span class="line">        <span class="string">"workbench.action.files.save"</span>,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/VSCodeVim/Vim#key-remapping" target="_blank" rel="noopener">VS Code Vim 有趣的映射</a></p>
+<!-- 使Vim更加有效，重要的一点就是要牢记您的开发工作流程。时不时地重新访问Vim配置，并添加新的映射来增强您的工作方式。因此，从现在开始要注意，并保持您的Vim配置剃须刀锋利。 -->
+
+
+
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
+<li><code>Ctrl + Shift + p</code> 打开命令面板输入 <code>Toggle Vim Mode</code> 快速切换 Vim 开关</li>
+<li><code>.</code> 重复最后一次修改</li>
+<li><code>&gt;&gt;</code> 向右缩进</li>
+<li><code>&lt;&lt;</code> 向左缩进</li>
+<li><code>u</code> 撤销</li>
+<li><code>*</code> 跳转到下一个相同单词</li>
+<li><code>#</code> 跳转到上一个相同单词</li>
+</ul>
 <h2 id="Chrome-插件-Vimium"><a href="#Chrome-插件-Vimium" class="headerlink" title="Chrome 插件 Vimium"></a>Chrome 插件 Vimium</h2><p><a href="https://chrome.google.com/webstore/detail/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="noopener">Vimium</a> 提供了在浏览器上使用 Vim 功能</p>
 <ul>
 <li><code>j</code> 向下移动网页</li>
@@ -632,9 +788,21 @@
 <li><code>J</code> 上一个标签页</li>
 <li><code>K</code> 下一个标签页<br>…</li>
 </ul>
-<h1 id="让键盘适应工具"><a href="#让键盘适应工具" class="headerlink" title="让键盘适应工具"></a>让键盘适应工具</h1><p>可以选择 ESC 和 Ctrl 比较容易触碰的键盘，或者把 CapsLock 映射成 Ctrl。<br>根据自己需求选择</p>
-<p>HHKB<br>Poker2<br>图片</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://vimjc.com/" target="_blank" rel="noopener">https://vimjc.com/</a><br><a href="https://github.com/VSCodeVim" target="_blank" rel="noopener">https://github.com/VSCodeVim</a><br><a href="https://coding.imooc.com/learn/list/50.html" target="_blank" rel="noopener">https://coding.imooc.com/learn/list/50.html</a><br><a href="https://www.zhihu.com/question/303850876" target="_blank" rel="noopener">https://www.zhihu.com/question/303850876</a><br><a href="https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim" target="_blank" rel="noopener">https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim</a></p>
+<h1 id="让键盘适应工具"><a href="#让键盘适应工具" class="headerlink" title="让键盘适应工具"></a>让键盘适应工具</h1><p>可以选择 ESC 和 Ctrl 比较容易触碰的键盘，或者把 CapsLock 映射成 Ctrl。</p>
+<p>⌨️</p>
+<ul>
+<li>HHKB</li>
+<li>Poker2</li>
+</ul>
+<h1 id="我使用-Vim-几个阶段"><a href="#我使用-Vim-几个阶段" class="headerlink" title="我使用 Vim 几个阶段"></a>我使用 Vim 几个阶段</h1><p>从第一次接触到现在也有 3-4 年左右了吧。</p>
+<ol>
+<li>最开始在学校的时候看网上的一个视频课程，里面用的 <code>Sublime + Vim</code> 插件。算是我的 <code>Vim</code>启蒙。导致我到现在一直对 <code>Sublime Text</code> 情有独钟。当时基本只会 <code>hjkl dd gg p</code> 一些简单的操作。</li>
+<li>学了文本对象，<code>f{char} t{char} d/c{文本对象}</code> 等 稍微熟练了些。</li>
+<li>开始了解 <code>VS Code</code> 与 <code>Vim</code> 的搭配。不得不说 <code>VS Cod</code> 中的 <code>Vim</code> 比 <code>Sublime</code> 中的 <code>Vim</code>功能强大了不少。</li>
+</ol>
+<p>有时可能同时会有同事在我电脑上操作，会很不习惯。这种时候 <code>toggle vim mode</code> 就很好使了。</p>
+<h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><p>先挑选对自己有用的用到日常开发中，不要一口一个大胖子。<br><code>Vim</code> 实在是太强大了，写这篇文章时，也有很多是现学(抄)的，熟能生巧。<br><code>VS Code</code> 和 <code>Vim</code> 的结合会有一些功能重合或冲突的地方根据自己习惯取舍，最适合自己的就是最好的。</p>
+<h1 id="参考链接-🔗"><a href="#参考链接-🔗" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h1><p><a href="https://vimjc.com/" target="_blank" rel="noopener">https://vimjc.com/</a><br><a href="https://github.com/VSCodeVim" target="_blank" rel="noopener">https://github.com/VSCodeVim</a><br><a href="https://coding.imooc.com/learn/list/50.html" target="_blank" rel="noopener">https://coding.imooc.com/learn/list/50.html</a><br><a href="https://www.zhihu.com/question/303850876" target="_blank" rel="noopener">https://www.zhihu.com/question/303850876</a><br><a href="https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim" target="_blank" rel="noopener">https://www.barbarianmeetscoding.com/blog/2019/02/08/boost-your-coding-fu-with-vscode-and-vim</a></p>
 
       
     </div>
@@ -818,7 +986,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先来点甜头-例子"><span class="nav-number">2.</span> <span class="nav-text">先来点甜头 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-模式"><span class="nav-number">4.</span> <span class="nav-text">Vim 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式切换"><span class="nav-number">4.1.</span> <span class="nav-text">模式切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normal-模式"><span class="nav-number">4.2.</span> <span class="nav-text">normal 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速移动"><span class="nav-number">4.2.1.</span> <span class="nav-text">快速移动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本对象"><span class="nav-number">5.</span> <span class="nav-text">文本对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速删除"><span class="nav-number">5.0.1.</span> <span class="nav-text">快速删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速修改"><span class="nav-number">5.0.2.</span> <span class="nav-text">快速修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-模式"><span class="nav-number">5.1.</span> <span class="nav-text">Command 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-模式"><span class="nav-number">5.2.</span> <span class="nav-text">Visual 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-模式"><span class="nav-number">5.3.</span> <span class="nav-text">insert 模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器"><span class="nav-number">6.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-宏-marcro"><span class="nav-number">7.</span> <span class="nav-text">Vim 宏 marcro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我使用-Vim-的几个阶段"><span class="nav-number">8.</span> <span class="nav-text">我使用 Vim 的几个阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">9.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-Studio-Code-的-Vim-设置"><span class="nav-number">9.1.</span> <span class="nav-text">Visual Studio Code 的 Vim 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#光标"><span class="nav-number">9.1.1.</span> <span class="nav-text">光标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Snake"><span class="nav-number">9.1.2.</span> <span class="nav-text">Snake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EasyMotion"><span class="nav-number">9.1.3.</span> <span class="nav-text">EasyMotion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome-插件-Vimium"><span class="nav-number">9.2.</span> <span class="nav-text">Chrome 插件 Vimium</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让键盘适应工具"><span class="nav-number">10.</span> <span class="nav-text">让键盘适应工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">11.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先来点甜头-例子"><span class="nav-number">2.</span> <span class="nav-text">先来点甜头 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-模式"><span class="nav-number">4.</span> <span class="nav-text">Vim 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式切换"><span class="nav-number">4.1.</span> <span class="nav-text">模式切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normal-模式"><span class="nav-number">4.2.</span> <span class="nav-text">normal 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速移动"><span class="nav-number">4.2.1.</span> <span class="nav-text">快速移动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本对象"><span class="nav-number">5.</span> <span class="nav-text">文本对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速删除"><span class="nav-number">5.0.1.</span> <span class="nav-text">快速删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速修改"><span class="nav-number">5.0.2.</span> <span class="nav-text">快速修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-模式"><span class="nav-number">5.1.</span> <span class="nav-text">Command 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#command-替换"><span class="nav-number">5.1.1.</span> <span class="nav-text">command 替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#command-模式搜索"><span class="nav-number">5.1.2.</span> <span class="nav-text">command 模式搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-模式"><span class="nav-number">5.2.</span> <span class="nav-text">Visual 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-模式"><span class="nav-number">5.3.</span> <span class="nav-text">insert 模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制粘贴"><span class="nav-number">6.</span> <span class="nav-text">复制粘贴</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#寄存器"><span class="nav-number">6.1.</span> <span class="nav-text">寄存器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-宏-marcro）"><span class="nav-number">7.</span> <span class="nav-text">Vim 宏 (marcro）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">8.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-suround"><span class="nav-number">8.1.</span> <span class="nav-text">vim-suround</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-sneak"><span class="nav-number">8.2.</span> <span class="nav-text">vim-sneak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Method"><span class="nav-number">8.3.</span> <span class="nav-text">Input Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-easymotion"><span class="nav-number">8.4.</span> <span class="nav-text">vim-easymotion</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setting"><span class="nav-number">9.</span> <span class="nav-text">Setting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">10.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome-插件-Vimium"><span class="nav-number">10.1.</span> <span class="nav-text">Chrome 插件 Vimium</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让键盘适应工具"><span class="nav-number">11.</span> <span class="nav-text">让键盘适应工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我使用-Vim-几个阶段"><span class="nav-number">12.</span> <span class="nav-text">我使用 Vim 几个阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#End"><span class="nav-number">13.</span> <span class="nav-text">End</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-🔗"><span class="nav-number">14.</span> <span class="nav-text">参考链接 🔗</span></a></li></ol></div>
             
 
           </div>
