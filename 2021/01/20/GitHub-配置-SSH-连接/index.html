@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Git,GitHub," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Jingchao's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="协议Git 可以使用的 4 种协议  HTTP 协议 SSH 本地协议 Git 协议  普遍使用的则是 HTTP 和 SSH，说一说这两种方式的优缺点。  HTTP优点  相同 URL（同一个 URL，仓库地址、clone 和 push 都是相同地址 例如: GitHub 上的仓库） 使用简单（只在需要授权时提示输入用户名&#x2F;密码） 既可以设置无授权匿名服务，也可以传输时授权和加密  缺点  架设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub 配置 SSH 连接">
+<meta property="og:url" content="https://www.chengjingchao.com/2021/01/20/GitHub-%E9%85%8D%E7%BD%AE-SSH-%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:site_name" content="Jingchao&#39;s Blog">
+<meta property="og:description" content="协议Git 可以使用的 4 种协议  HTTP 协议 SSH 本地协议 Git 协议  普遍使用的则是 HTTP 和 SSH，说一说这两种方式的优缺点。  HTTP优点  相同 URL（同一个 URL，仓库地址、clone 和 push 都是相同地址 例如: GitHub 上的仓库） 使用简单（只在需要授权时提示输入用户名&#x2F;密码） 既可以设置无授权匿名服务，也可以传输时授权和加密  缺点  架设">
+<meta property="og:image" content="https://www.chengjingchao.com/img/github-ssh/http_ssh.png">
+<meta property="og:image" content="https://www.chengjingchao.com/img/github-ssh/github.png">
+<meta property="og:image" content="https://www.chengjingchao.com/img/github-ssh/git-tree.png">
+<meta property="og:image" content="https://www.chengjingchao.com/img/github-ssh/git_clone.png">
+<meta property="og:image" content="https://www.chengjingchao.com/img/github-ssh/git_config.png">
+<meta property="article:published_time" content="2021-01-20T14:05:37.000Z">
+<meta property="article:modified_time" content="2021-01-20T14:21:43.433Z">
+<meta property="article:author" content="Jingchao Cheng">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chengjingchao.com/img/github-ssh/http_ssh.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.chengjingchao.com/2021/01/20/GitHub-配置-SSH-连接/"/>
+
+
+
+
+
+  <title>GitHub 配置 SSH 连接 | Jingchao's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-169283014-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b4edffcf476eec72f2abf125dc28d3f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jingchao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.chengjingchao.com/2021/01/20/GitHub-%E9%85%8D%E7%BD%AE-SSH-%E8%BF%9E%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jingchao Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jingchao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GitHub 配置 SSH 连接</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T22:05:37+08:00">
+                2021-01-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-01-20T22:21:43+08:00">
+                2021-01-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h1><p>Git 可以使用的 4 种协议</p>
+<ol>
+<li>HTTP 协议</li>
+<li>SSH</li>
+<li>本地协议</li>
+<li>Git 协议</li>
+</ol>
+<p>普遍使用的则是 HTTP 和 SSH，说一说这两种方式的优缺点。</p>
+<p><img src="/img/github-ssh/http_ssh.png" alt=""></p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>优点</p>
+<ul>
+<li>相同 URL（同一个 URL，仓库地址、clone 和 push 都是相同地址 例如: GitHub 上的仓库）</li>
+<li>使用简单（只在需要授权时提示输入用户名/密码）</li>
+<li>既可以设置无授权匿名服务，也可以传输时授权和加密</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>架设 HTTP/S 协议会比 SSH 麻烦一些</li>
+<li>授权比较麻烦（需要频繁输入账号密码，当然 Git 也提供有缓存功能）</li>
+</ul>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p>优点</p>
+<ul>
+<li>普遍（大多数服务器已支持 SSH 访问，即使没有也很容易架设）</li>
+<li>安全（数据传输要经过授权和加密）</li>
+<li>高效（传输尽量压缩数据）</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>不能匿名访问，不利于开源项目（即便只要读取数据，也要有通过 SSH 访问主机的权限）</li>
+</ul>
+<h1 id="使用-SSH"><a href="#使用-SSH" class="headerlink" title="使用 SSH"></a>使用 SSH</h1><p>SSH 密钥可以让用户无需输入密码即可登录到 SSH 服务器中。SSH 密钥总是成对出现（公钥和私钥）</p>
+<p>使用流程</p>
+<ol>
+<li>生成密钥对</li>
+<li>将生成的公钥添加到服务器</li>
+<li>测试连接</li>
+</ol>
+<p>SSH 连接的时候，远程服务器向用户发送一段随机字符串，用户使用对应的私钥加密后，再发送到远程主机。<br>远程主机使用公钥进行解密，如果成功证明用户是可信的。这一过程不需要用户手动操作。</p>
+<h2 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a>生成密钥对</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>选项</p>
+<ul>
+<li>-t 可选 指定加密算法，默认 RSA</li>
+<li>-b 可选 生成密钥长度</li>
+<li>-C 可选 添加密钥对的说明（你可以随便输入内容）</li>
+<li>-f 可选 指定生成私钥文件名，不使用 -f 会在创建过程中会提示用户输入</li>
+<li>-P 可选 指定 passphrase 使用私钥时的密码 passphrase 至少 5 个字符</li>
+<li>-p 可选 修改 passphrase</li>
+</ul>
+<p>私钥默认名称为 id_ + 算法名称<br>私钥对应的公钥名称为 私钥文件名 + .pub</p>
+<p><code>ssh-keygen</code> 不添加任何选项生成过程中<br>第一次提示用户输入是保存密钥的文件名，直接回车使用默认值。<br>第二次提示用户输入 passphrase ，passphrase 是一个密码（使用私钥时的密码，使用后会在每次 pull、push 等操作中验证 passphrase）不使用可直接回车。<br>第三次提示用书再次输入 passphrase。<br>完成后 <code>~/.ssh</code> 目录下会多出两个文件 <code>id_rsa</code>、<code>id_rsa.pub</code>。</p>
+<h2 id="将生成的公钥添加到服务器"><a href="#将生成的公钥添加到服务器" class="headerlink" title="将生成的公钥添加到服务器"></a>将生成的公钥添加到服务器</h2><p>GitHub: <code>Settings</code> &gt; <code>SSH and GPG keys</code> &gt; <code>New SSH key</code><br>将上一步生成的 <code>.pub</code> 的公钥内容复制到 Key 中，Title 随便填，添加即可。</p>
+<h2 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h2><p>公钥添加到 GitHub，可以使用 SSH 测试 GItHub 连接，没有问题会输出欢迎语句。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi jingchaocheng! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果出现了下面的问题 （<a href="https://docs.github.com/cn/github/authenticating-to-github/using-ssh-over-the-https-port" target="_blank" rel="noopener">了解更多</a>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">ssh: connect to host github.com port 22: Connection timed out</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:jingchaocheng/git.git</span><br><span class="line">Cloning into <span class="string">'git'</span>...</span><br><span class="line">ssh: connect to host github.com port 22: Connection timed out</span><br><span class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
+
+<p>解决方法<br>在 <code>~/.ssh/</code> 目录下 <code>config</code>（如果没有新建一个）文件中添加下面内容后，再次测试链接。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="同一设备多个-Git-托管服务"><a href="#同一设备多个-Git-托管服务" class="headerlink" title="同一设备多个 Git 托管服务"></a>同一设备多个 Git 托管服务</h1><p>场景：公司内工作开发使用 GitLab，自己瞎折腾用的 GitHub、Gitee（即便每个平台注册的邮箱号不同也可以）。</p>
+<p>使用方法：将之前生成的公钥添加到各个 Git 托管服务中即可。</p>
+<p>需注意各个平台上的用户名和邮箱是否和本地的 git config 中的内容一致，如需修改参考下面的配置用户信息。</p>
+<h1 id="同一设备两个-GitHub-账号"><a href="#同一设备两个-GitHub-账号" class="headerlink" title="同一设备两个 GitHub 账号"></a>同一设备两个 GitHub 账号</h1><p>场景：有两个不同的 GitHub 账号，想在同一台电脑上使用。（同理可解决 两个 GitLab 账号、两个 Gitee 账号问题在同一设备使用的问题）。</p>
+<p>公钥在同一个托管平台上具有唯一性，所以同一平台的多个账号不能使用同一公钥，这种情况需要生成多个密钥使用，每个账号对应一个密钥对。</p>
+<p>在同一个平台上多个账号添加同一个公钥的错误提示<br><img src="/img/github-ssh/github.png" alt=""><br>GitHub<br><img src="/img/github-ssh/git-tree.png" alt=""><br>Gitee</p>
+<p>再次生成一对密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -f 996</span><br></pre></td></tr></table></figure>
+
+<p>这个时候 ssh 目录下应该有两对密钥 4 个文件<br>新建 config 文件，添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 id_rsa 密钥的</span></span><br><span class="line">Host github.com</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 996 密钥的</span></span><br><span class="line">Host 996</span><br><span class="line">Hostname sss.github.com</span><br><span class="line">IdentityFile ~/.ssh/996</span><br></pre></td></tr></table></figure>
+<p>每个配置区段使用 <code>Host</code> 来区分， <code>IdentityFile</code> 指定<strong>私钥</strong>文件路径</p>
+<p>将两个公钥的内容分别添加到两个账号的 <code>SSH keys</code> 中</p>
+<p>使用 <code>config</code> 文件中第一个 <code>Host</code> 配置时和之前一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:jingchaocheng/git.git</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>config</code> 文件中使用第二个 <code>Host</code> 配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@996:996-vip/git.git</span><br><span class="line"><span class="comment"># 并非原来的 git@github.com:996-vip/git.git</span></span><br><span class="line"><span class="comment"># 需要将 github.com 修改成 第二个 host 配置的 996（可以自定义这个名字，一致就行）</span></span><br><span class="line"><span class="comment"># 996-vip 为 GitHub 用户名</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/github-ssh/git_clone.png" alt=""></p>
+<p>这样就完成了在同一设备同时使用两个 GitHub 账号的设置，记得配置 clone 仓库的用户信息。两个账号的用户信息必定不相同。</p>
+<h1 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h1><p>Git 配置文件存储在三个不同位置，有相同配置时下级覆盖上级。</p>
+<p><img src="/img/github-ssh/git_config.png" alt=""></p>
+<p>示例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前用户</span></span><br><span class="line">git config --global user.name <span class="string">"你的用户名"</span></span><br><span class="line">git config --global user.email <span class="string">"你的邮箱"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前仓库</span></span><br><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">"你的用户名"</span></span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">"你的邮箱"</span></span><br></pre></td></tr></table></figure>
+<p>每一次 Git 的提交都会使用这些信息，并写入到每一次提交中。提交记录中的 Author 就是取的配置文件中的 <code>user.name</code> 和 <code>uesr.email</code>。所以都修改成当前仓库的 git config 的用户名和邮箱与目标托管平台中的用户名和邮箱一致即可。</p>
+<h1 id="参考链接-🔗"><a href="#参考链接-🔗" class="headerlink" title="参考链接 🔗"></a>参考链接 🔗</h1><ul>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></li>
+<li><a href="https://www.cnblogs.com/ayseeing/p/3572582.html" target="_blank" rel="noopener">https://www.cnblogs.com/ayseeing/p/3572582.html</a></li>
+<li><a href="https://www.cnblogs.com/ayseeing/p/4445194.html" target="_blank" rel="noopener">https://www.cnblogs.com/ayseeing/p/4445194.html</a></li>
+<li><a href="https://daemon369.github.io/ssh/2015/03/08/generating-ssh-keys" target="_blank" rel="noopener">https://daemon369.github.io/ssh/2015/03/08/generating-ssh-keys</a></li>
+<li><a href="https://docs.github.com/cn/github/authenticating-to-github/using-ssh-over-the-https-port" target="_blank" rel="noopener">https://docs.github.com/cn/github/authenticating-to-github/using-ssh-over-the-https-port</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+            <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/31/2020-%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="next" title="2020 年终总结">
+                <i class="fa fa-chevron-left"></i> 2020 年终总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jingchao Cheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#协议"><span class="nav-number">1.</span> <span class="nav-text">协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">1.2.</span> <span class="nav-text">SSH</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-SSH"><span class="nav-number">2.</span> <span class="nav-text">使用 SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成密钥对"><span class="nav-number">2.1.</span> <span class="nav-text">生成密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将生成的公钥添加到服务器"><span class="nav-number">2.2.</span> <span class="nav-text">将生成的公钥添加到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试连接"><span class="nav-number">2.3.</span> <span class="nav-text">测试连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同一设备多个-Git-托管服务"><span class="nav-number">3.</span> <span class="nav-text">同一设备多个 Git 托管服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同一设备两个-GitHub-账号"><span class="nav-number">4.</span> <span class="nav-text">同一设备两个 GitHub 账号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置用户信息"><span class="nav-number">5.</span> <span class="nav-text">配置用户信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接-🔗"><span class="nav-number">6.</span> <span class="nav-text">参考链接 🔗</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jingchao Cheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
