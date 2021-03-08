@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.chengjingchao.com/"/>
-  <updated>2021-01-20T14:21:43.433Z</updated>
+  <updated>2021-03-08T13:20:49.095Z</updated>
   <id>https://www.chengjingchao.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给大家看的设计书</title>
+    <link href="https://www.chengjingchao.com/2021/03/08/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9C%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%A6/"/>
+    <id>https://www.chengjingchao.com/2021/03/08/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9C%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%A6/</id>
+    <published>2021-03-08T12:46:46.000Z</published>
+    <updated>2021-03-08T13:20:49.095Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><blockquote><p>一旦能够说出什么东西的名字，就会很容易注意到它。</p></blockquote><p>4 大基本设计原则</p><ul><li>对比 —— 突出重点避免页面上元素太过相似（可以是字体、颜色、大小、线宽、形状、空间等方面的对比）</li><li>重复 —— 重复颜色、形状、材质、空间关系、线宽、字体、大小和图片等。增加条理性和统一性。</li><li>对齐 —— 不能随意安放。应当与页面上的另一个元素有某种视觉联系。清晰、精巧且清爽的外观。</li><li>亲密性 —— 彼此相关的项应当靠近，归组在一起。组织信息，减少混乱，为读者提供清晰的结构。</li></ul><h2 id="2-亲密性"><a href="#2-亲密性" class="headerlink" title="2. 亲密性"></a>2. 亲密性</h2><h2 id="3-对齐"><a href="#3-对齐" class="headerlink" title="3. 对齐"></a>3. 对齐</h2><h2 id="4-重复"><a href="#4-重复" class="headerlink" title="4. 重复"></a>4. 重复</h2><h2 id="5-对比"><a href="#5-对比" class="headerlink" title="5. 对比"></a>5. 对比</h2><h2 id="6-4-大基本原则复习"><a href="#6-4-大基本原则复习" class="headerlink" title="6. 4 大基本原则复习"></a>6. 4 大基本原则复习</h2><h2 id="7-颜色运用"><a href="#7-颜色运用" class="headerlink" title="7. 颜色运用"></a>7. 颜色运用</h2><p>色轮的基础是红、黄和蓝 3 种颜色。被称为三原色（无法创建的颜色，其他颜色可以通过混合颜色得到但是没有办法通过混合其他颜色来得到纯黄、纯红或纯蓝色）<br>三原色色轮</p><p>将色轮上相邻的颜色等量混合，就会得到三间色<br>黄 + 蓝 = 绿<br>黄 + 红 = 橙<br>蓝 + 红 = 绿</p><p>把上面色轮空白两边的颜色等量混合就会得到第三色</p><p>色轮的色彩应用</p><ul><li>互补</li><li>三色组</li><li>分裂互补三色组</li><li>类似色</li></ul><p>色轮上相对的颜色为互补色。一种作为主色，另一种用于强调</p><p>彼此等距的三种颜色通常会形成一个让人愉悦的三色组。</p><p>红黄蓝就是一种三色组也称为基色三色组。儿童产品通常都采用这种组合</p><p>另一种形式的三色组称为分裂互补三色组。从色轮一边选择一种颜色，再在色轮上找出它对面互补色两侧的颜色。</p><p>类似色组合由色轮上彼此相邻的颜色组成。不论是组合两种颜色还是三种颜色，他们都有相同的基础色，这就形成了一个协调的组合。用不同的亮色和暗色组合一组类似色</p><ul><li>色调就是纯色</li><li>向色调增加黑色就构成一个暗色</li><li>向色调增加白色就构成一个亮色</li></ul><p>单色<br>单色组合由一种色调（纯色）及其相应的多种亮色和暗色组成。</p><p>暖色与冷色<br>颜色往往要么是暖色（说明其中包含红色或黄色），要么是冷色（说明其中包含蓝色）。<br>冷色趋于做背景色，而暖色是趋进型。</p><h3 id="如何取舍"><a href="#如何取舍" class="headerlink" title="如何取舍"></a>如何取舍</h3><ol><li>项目是否有季节性？</li><li>官方色？</li><li>是否包含图片</li></ol><h2 id="8-更多提示与技巧"><a href="#8-更多提示与技巧" class="headerlink" title="8. 更多提示与技巧"></a>8. 更多提示与技巧</h2><h1 id="字体设计"><a href="#字体设计" class="headerlink" title="字体设计"></a>字体设计</h1><h2 id="9-字体的基本规则"><a href="#9-字体的基本规则" class="headerlink" title="9. 字体的基本规则"></a>9. 字体的基本规则</h2><h2 id="10-字体与人生"><a href="#10-字体与人生" class="headerlink" title="10. 字体与人生"></a>10. 字体与人生</h2><h2 id="11-字体类别"><a href="#11-字体类别" class="headerlink" title="11. 字体类别"></a>11. 字体类别</h2><ul><li>OldStyle (旧式体)</li><li>Modern (现代体)</li><li>Slab serif (粗衬线体)</li><li>Sans serif (无衬线体)</li><li>Script (手写体)</li><li>Descorative (花体)</li></ul><h2 id="12-字体对比"><a href="#12-字体对比" class="headerlink" title="12. 字体对比"></a>12. 字体对比</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;设计原则&quot;&gt;&lt;a href=&quot;#设计原则&quot; class=&quot;headerlink&quot; title=&quot;设计原则&quot;&gt;&lt;/a&gt;设计原则&lt;/h1&gt;&lt;h2 id=&quot;1-引言&quot;&gt;&lt;a href=&quot;#1-引言&quot; class=&quot;headerlink&quot; title=&quot;1. 引言&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="阅读笔记" scheme="https://www.chengjingchao.com/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="设计" scheme="https://www.chengjingchao.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="阅读" scheme="https://www.chengjingchao.com/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>GitHub 配置 SSH 连接</title>
