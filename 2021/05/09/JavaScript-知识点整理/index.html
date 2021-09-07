@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Jingchao's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="标识符 变量、函数、属性或函数参数的名称。  标识符规则 首字符必须是 字母、下划线 或 $ 其他字符可以是 字母、下划线、$ 或 数字   区分大小写 关键字保留字不能作为标识符 标识符采用驼峰写法，第一个字母小写，剩下的每个单词的首字母大写    严格模式 use strict 一种不同的 JS 解析和执行模型。   不规范的写法会被处理 不安全的会抛出错误  整个 js 文件启用严格模式，在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 知识点整理">
+<meta property="og:url" content="https://www.chengjingchao.com/2021/05/09/JavaScript-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Jingchao&#39;s Blog">
+<meta property="og:description" content="标识符 变量、函数、属性或函数参数的名称。  标识符规则 首字符必须是 字母、下划线 或 $ 其他字符可以是 字母、下划线、$ 或 数字   区分大小写 关键字保留字不能作为标识符 标识符采用驼峰写法，第一个字母小写，剩下的每个单词的首字母大写    严格模式 use strict 一种不同的 JS 解析和执行模型。   不规范的写法会被处理 不安全的会抛出错误  整个 js 文件启用严格模式，在">
+<meta property="article:published_time" content="2021-05-09T01:19:29.000Z">
+<meta property="article:modified_time" content="2021-05-15T05:11:28.815Z">
+<meta property="article:author" content="Jingchao Cheng">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.chengjingchao.com/2021/05/09/JavaScript-知识点整理/"/>
+
+
+
+
+
+  <title>JavaScript 知识点整理 | Jingchao's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-169283014-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b4edffcf476eec72f2abf125dc28d3f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jingchao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.chengjingchao.com/2021/05/09/JavaScript-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jingchao Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jingchao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 知识点整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-09T09:19:29+08:00">
+                2021-05-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-15T13:11:28+08:00">
+                2021-05-15
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h1><blockquote>
+<p>变量、函数、属性或函数参数的名称。</p>
+</blockquote>
+<h3 id="标识符规则"><a href="#标识符规则" class="headerlink" title="标识符规则"></a>标识符规则</h3><ol>
+<li>首字符必须是 <strong>字母、下划线</strong> 或 <strong>$</strong></li>
+<li>其他字符可以是 <strong>字母、下划线、$</strong> 或 <strong>数字</strong></li>
+</ol>
+<ul>
+<li>区分大小写</li>
+<li>关键字保留字不能作为标识符</li>
+<li>标识符采用驼峰写法，第一个字母小写，剩下的每个单词的首字母大写</li>
+</ul>
+<hr>
+
+<h1 id="严格模式-use-strict"><a href="#严格模式-use-strict" class="headerlink" title="严格模式 use strict"></a>严格模式 use strict</h1><blockquote>
+<p>一种不同的 JS 解析和执行模型。</p>
+</blockquote>
+<ul>
+<li>不规范的写法会被处理</li>
+<li>不安全的会抛出错误</li>
+</ul>
+<p>整个 js 文件启用严格模式，在开头加上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br></pre></td></tr></table></figure>
+
+<p>单独指定一个函数严格模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><blockquote>
+<p>变量是松散类型，可以保存任何类型的数据</p>
+</blockquote>
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><ol>
+<li><code>var</code></li>
+<li><code>let</code></li>
+<li><code>const</code></li>
+</ol>
+<blockquote>
+<p>不初始化默认保存 undefined</p>
+</blockquote>
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><ul>
+<li>变量提升（把变量声明放到作用域的顶部，初始化操作留在原处执行）</li>
+<li>可以重复声明（变量提升会合为一个声明）</li>
+<li>函数作用域（成为包含它的函数的局部变量）</li>
+<li>全局变量会成为 window 对象的属性（可能会覆盖全局属性）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量提升</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(age)</span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">26</span></span><br><span class="line">&#125;</span><br><span class="line">foo() <span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> age</span><br><span class="line">  <span class="built_in">console</span>.log(age)</span><br><span class="line">  age = <span class="number">26</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以重复声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">16</span></span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">26</span></span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">36</span></span><br><span class="line">  <span class="built_in">console</span>.log(age)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo() <span class="comment">// 36</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数作用域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> message = <span class="string">'hi'</span></span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line"><span class="built_in">console</span>.log(message) <span class="comment">// ReferenceError: message is not defined</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量会成为 window 对象的属性</span></span><br><span class="line"><span class="keyword">var</span> message = <span class="string">'hi'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.message) <span class="comment">// hi</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><ul>
+<li>块作用域（函数内部或 {} 之间的区域）</li>
+<li>同一个作用域禁止重复声明（作用域中已经存在某个标识符，再使用 let 声明会报错）</li>
+<li>临时死区（在声明变量之前使用）</li>
+<li>全局作用域中声明的变量不会成为 window 对象的属性</li>
+<li>for 循环中的行为不一样（每次迭代时都会创建新的绑定）</li>
+</ul>
+<blockquote>
+<p>块作用域：只在当前代码块内有效，执行到代码块外会立即销毁。</p>
+</blockquote>
+<blockquote>
+<p>临时死区（Temporal Dead Zone）：与 var 不同，let 和 const 不会发生变量提升，如果在声明前访问这些变量，即使是 type of 也会触发引用错误。JS 引擎发现变量声明时，要么提升至作用域顶部（var），要么将声明放到 TDZ 中（let、const）。访问 TDZ 中的变量会触发运行时错误。只有执行过变量声明语句后，变量才会从 TDZ 中移出，方可正常访问。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 块作用域</span></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'jack'</span></span><br><span class="line">  <span class="built_in">console</span>.log(name) <span class="comment">// jack</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name) <span class="comment">// jack</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> age = <span class="number">26</span></span><br><span class="line">  <span class="built_in">console</span>.log(age) <span class="comment">// 26</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(age) <span class="comment">// ReferenceError: age is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不能重复声明</span></span><br><span class="line"><span class="keyword">var</span> age</span><br><span class="line"><span class="keyword">let</span> age <span class="comment">// SyntaxError: Identifier 'age' has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 暂时性死区</span></span><br><span class="line"><span class="built_in">console</span>.log(age)</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">26</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// for 循环</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(i)</span><br><span class="line"></span><br><span class="line">循环里的每次迭代同时共享变量 i ，循环内部创建的函数全都保留了对相同变量的引用。</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> 循环中勇 <span class="keyword">let</span> 声明迭代变量时，JS 引擎在后台会为每一个迭代循环声明一个新的迭代变量。每个 setTimeout 引用的都是不同的变量实例。</span><br><span class="line">每次迭代循环都会创建一个新变量，并以之前迭代中同名变量的值将其初始化。</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>const 基本与 let 相同。区别如下</p>
+<ul>
+<li>声明时必须初始化（赋值）</li>
+<li>不能修改变量引用（可以修改对象内部属性）</li>
+<li>在 for-in 或 for-of 循环中使用时与 let 一致</li>
+</ul>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ol>
+<li>不使用 var</li>
+<li>const 优先 let 次之（知道未来会修改变量时，再使用let。）</li>
+</ol>
+<hr>
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>ssb nnu o</p>
+<ol>
+<li>String</li>
+<li>Symbol</li>
+<li>Boolean</li>
+<li>Null</li>
+<li>Number</li>
+<li>Undefined</li>
+<li>Object</li>
+</ol>
+<h2 id="type-of"><a href="#type-of" class="headerlink" title="type of"></a>type of</h2><p>typoe of 会返回下列字符串</p>
+<ol>
+<li>string</li>
+<li>symbol</li>
+<li>boolean</li>
+<li>number</li>
+<li>function</li>
+<li>undefined</li>
+<li>object 对象 或 null</li>
+</ol>
+<h2 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h2><p>var 或 let 声明了但没有初始化就相当于给变量赋值 undefined<br>不要显式初始化 undefined<br>typeof 未声明和未初始化的变量都返回 undefined<br>建议声明变量的同时进行初始化，这样当 type of 返回 undefined 时，就只当是变量尚未声明。</p>
+<p>undefined 的意义就是区分空对象指针 null 和未初始化变量的区别。</p>
+<h2 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h2><p>空对象指针<br>声明要保存对象的变量时，建议使用 null 初始化，这样检测是不是 null 就可以知道是否后来被重新赋值了</p>
+<p>undefined 由 null 派生而来 null == undefined // true</p>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><p>true false</p>
+<p>Boolean() 可以转换任意数据类型，返回一个 boolean 值 if()<br>转换为 false 的值<br>false、’’、0、NaN、null、undefined</p>
+<h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ol>
+<li>Number()</li>
+<li>parseInt()</li>
+<li>parseFloat() 只解析十进制值</li>
+</ol>
+<p>Number() 是转型函数，可用于任何数据类型<br>后两个函数主要用于将字符串转换为数值。</p>
+<p>Number()</p>
+<ul>
+<li>布尔值 =&gt; 1, 0</li>
+<li>数值直接返回</li>
+<li>null =&gt; 0</li>
+<li>undefined =&gt; NaN</li>
+<li>‘’ =&gt; 0</li>
+<li>有效数字字符串返回数字，其他为 NaN</li>
+</ul>
+<p>parseInt(, 10)</p>
+<ul>
+<li>‘’ =&gt; NaN</li>
+</ul>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>字符串是不可变的，一旦创建值就不能修改。<br>要修改某个变量中的字符串值，必须先销毁原始字符串，然后将包含新值的另一个字符串保存到该变量。</p>
+<h3 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h3><p>age.toString()</p>
+<h1 id="基本引用类型"><a href="#基本引用类型" class="headerlink" title="基本引用类型"></a>基本引用类型</h1><p>构造函数就是用来创造新对象的函数<br>new 其实就是创建一个对象<br>new Date()</p>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>UTC 时间 保存 1970-01-01 至今所经过的毫秒数</p>
+<h2 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h2><h2 id="原始值包装类型"><a href="#原始值包装类型" class="headerlink" title="原始值包装类型"></a>原始值包装类型</h2><ul>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/14/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript-%EF%BC%88%E4%B8%8A%EF%BC%89/" rel="next" title="你不知道的 JavaScript（上）">
+                <i class="fa fa-chevron-left"></i> 你不知道的 JavaScript（上）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/09/07/%E5%BF%AB%E6%8D%B7%E5%88%87%E6%8D%A2-Windows-%E4%BB%A3%E7%90%86%E5%BC%80%E5%85%B3/" rel="prev" title="快捷切换 Windows 代理开关">
+                快捷切换 Windows 代理开关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jingchao Cheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#标识符"><span class="nav-number">1.</span> <span class="nav-text">标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标识符规则"><span class="nav-number">1.0.1.</span> <span class="nav-text">标识符规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#严格模式-use-strict"><span class="nav-number">2.</span> <span class="nav-text">严格模式 use strict</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">3.1.</span> <span class="nav-text">声明变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">3.1.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">3.1.2.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">3.1.3.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳实践"><span class="nav-number">3.1.4.</span> <span class="nav-text">最佳实践</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#type-of"><span class="nav-number">4.1.</span> <span class="nav-text">type of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Undefined"><span class="nav-number">4.2.</span> <span class="nav-text">Undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null"><span class="nav-number">4.3.</span> <span class="nav-text">Null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean"><span class="nav-number">4.4.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number"><span class="nav-number">4.5.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">4.5.1.</span> <span class="nav-text">类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">4.6.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转换为字符串"><span class="nav-number">4.6.1.</span> <span class="nav-text">转换为字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本引用类型"><span class="nav-number">5.</span> <span class="nav-text">基本引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Date"><span class="nav-number">5.1.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp"><span class="nav-number">5.2.</span> <span class="nav-text">RegExp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原始值包装类型"><span class="nav-number">5.3.</span> <span class="nav-text">原始值包装类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jingchao Cheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
